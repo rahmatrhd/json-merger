@@ -13,3 +13,10 @@ npm install
 ```zsh
 npm run dev
 ```
+
+## Deployment
+
+1. Deploy to Google Cloud Functions
+```zsh
+npm run deploy
+```
