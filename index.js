@@ -1,6 +1,15 @@
 const merge = require('lodash.merge')
 
 exports.jsonMerger = (req, res) => {
+    // CORS
+    res.set('Access-Control-Allow-Origin', '*');
+    if (req.method === 'OPTIONS') {
+        res.set('Access-Control-Allow-Methods', 'GET, POST');
+        res.set('Access-Control-Allow-Headers', 'Content-Type');
+        res.set('Access-Control-Max-Age', '3600');
+        res.status(204).send();
+    }
+
     const { object1: rawObject1, object2: rawObject2 } = req.body
 
     if (typeof rawObject1 === 'string' && typeof rawObject2 === 'string') {
