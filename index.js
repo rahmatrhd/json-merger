@@ -13,4 +13,6 @@ exports.jsonMerger = (req, res) => {
             res.send(err)
         }
     }
+
+    res.status(400).end()
 }
