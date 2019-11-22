@@ -13,10 +13,19 @@ npm install
 ```zsh
 npm run dev
 ```
+or
+```zsh
+npm run dev:watch
+```
 
 ## Deployment
 
-1. Deploy to Google Cloud Functions
+1. Transpile from typescript to javascript
+```zsh
+npm run build
+```
+
+2. Deploy to Google Cloud Functions
 ```zsh
 npm run deploy
 ```
