@@ -10,7 +10,7 @@
     "dev": "npx @google-cloud/functions-framework --target=jsonMerger",
     "dev:watch": "npx tsc-watch --onSuccess 'npm run dev'",
     "build": "npx tsc",
-    "predeploy": "cp ./package.json ./$npm_package_config_out_dir/package.json",
+    "predeploy": "cp package.json $npm_package_config_out_dir/package.json",
     "deploy": "gcloud functions deploy jsonMerger --trigger-http --runtime=nodejs8"
   },
   "repository": {
