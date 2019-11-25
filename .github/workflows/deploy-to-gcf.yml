@@ -1,0 +1,36 @@
+name: Deploy to Google Cloud Functions
+
+on:
+  push:
+    branches: master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x]
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: Install dependencies and build
+      run: |
+        npm ci
+        npm run build
+        
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x]
+    steps:
+    - name: gcloud
+      uses: actions-hub/gcloud@272.0.0
+      with:
+        PROJECT_ID: ${{secrets.GCP_PROJECT_ID}}
+        APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+    - name: deploy
+      run: npm run deploy
