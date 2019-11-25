@@ -26,4 +26,6 @@ jobs:
         PROJECT_ID: ${{secrets.GCP_PROJECT_ID}}
         APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
     - name: deploy
-      run: npm run deploy
+      run: |
+        ls
+        npm run deploy
