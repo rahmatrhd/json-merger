@@ -20,10 +20,11 @@ jobs:
       run: |
         npm ci
         npm run build
-    - name: gcloud
-      uses: actions-hub/gcloud@272.0.0
-      env:
-        PROJECT_ID: ${{secrets.GCP_PROJECT_ID}}
-        APPLICATION_CREDENTIALS: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
+    - name: setup gcloud
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+      with:
+        version: '252.0.0'
+        service_account_email: ${{secrets.SERVICE_ACCOUNT_EMAIL}}
+        service_account_key: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
     - name: deploy
       run: npm run deploy -- --project=${{secrets.GCP_PROJECT_ID}}
