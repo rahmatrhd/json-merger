@@ -27,4 +27,4 @@ jobs:
         service_account_email: ${{secrets.SERVICE_ACCOUNT_EMAIL}}
         service_account_key: ${{secrets.GOOGLE_APPLICATION_CREDENTIALS}}
     - name: deploy
-      run: npm run deploy -- --project=${{secrets.GCP_PROJECT_ID}}
+      run: npm run deploy -- --project=${{secrets.GCP_PROJECT_ID}} --service-account=${{secrets.SERVICE_ACCOUNT_EMAIL}}
